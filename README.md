@@ -1,0 +1,2 @@
+# projeto-trocAgora
+Trabalho_Multi_Disciplinar-Curso_Tecnico_em_Informática-Colégio-Pedro-Macedo
