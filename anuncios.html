@@ -125,7 +125,7 @@
         var dinamic_protocol = window.location.protocol;
         dinamic_protocol = dinamic_protocol == "file:" ? "https:" : dinamic_protocol;
 
-        var tutors_json_url = dinamic_protocol + "//dev.tiagofranca.com/opensources/trocagora/get_csv.php";
+        var tutors_json_url = dinamic_protocol + "//dev.tiagofranca.com/opensources/trocagora/app/get_csv.php";
 
         fetch(tutors_json_url)
           .then(
