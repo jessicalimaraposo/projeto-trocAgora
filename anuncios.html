@@ -90,12 +90,6 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      jQuery(document).ready(function ()
-      {
-        //Adiciona o bootstrap antes do utilizado no WP  para não afetar o estilo/layout padrão
-        jQuery("head").prepend("<link id='bootstrap_3_4_1' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css' type='text/css' rel='stylesheet' />");
-
-      });
 
       function appendRow(livro)
       {
@@ -104,7 +98,7 @@
           `<div class="col-4">
             <div class="card shadow-sm">
               <img  class="d-none card-img-top" width="100%" height="225" src="${livro.foto_livro}">
-              <iframe class="card-img-top" src="${livro.foto_livro}" width="100%" height="225"></iframe>
+              <iframe class="card-img-top" src="${livro.foto_livro}" width="100%" height="225" crossorigin="anonymous"></iframe>
     
               <div class="card-body">
                 <h5>${livro.livro}</h5>
@@ -125,7 +119,13 @@
 
       $(document).ready(function ()
       {
-        var tutors_json_url = "//dev.tiagofranca.com/opensources/trocagora/get_csv.php";
+        /*
+        Essa parte é pra pegar o protocolo dinamicamante e em caso de ser "file:" eu forço ser "https:" mas se for "https" ou "http" usa com otal
+        */
+        var dinamic_protocol = window.location.protocol;
+        dinamic_protocol = dinamic_protocol == "file:" ? "https:" : dinamic_protocol;
+
+        var tutors_json_url = dinamic_protocol + "//dev.tiagofranca.com/opensources/trocagora/get_csv.php";
 
         fetch(tutors_json_url)
           .then(
